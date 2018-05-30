@@ -1,0 +1,6 @@
+<%= form_tag :search, method: :get, class: "form-inline" do %>
+  <div class="form-group search-field">
+    <%= text_field_tag :search, "Enter Word", class: "form-control" %>
+    <%= submit_tag "Validate Word", class: "btn btn-primary" %>
+  </div>
+<% end %>
