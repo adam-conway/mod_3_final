@@ -38,4 +38,18 @@ describe "Post /api/v1/games/:id/plays" do
     expect(game_data["scores"][1]).to have_key("score")
     expect(game_data["scores"][1]["score"]).to eq(16)
   end
+
+  it "tries to post an invalid word" do
+    josh = User.create(id: 1, name: "Josh")
+    sal = User.create(id: 2, name: "Sal")
+    word = "foxez"
+
+    game = Game.create(player_1: josh, player_2: sal)
+
+    post "http://localhost:3000/api/v1/games/#{game.id}/plays?user_id=1&word=#{word}"
+
+    invalid_move = JSON.parse(response.body)
+    expect(invalid_move).to have_key("message")
+    expect(invalid_move["message"]).to eq("#{word} is not a valid word.")
+  end
 end
