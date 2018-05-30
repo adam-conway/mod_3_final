@@ -15,24 +15,24 @@ describe "Get /api/v1/games/:id" do
     get "http://localhost:3000/api/v1/games/#{game.id}"
 
     expect(response.status).to eq 200
-    game = JSON.parse(response.body)
+    game_data = JSON.parse(response.body)
 
-    expect(game).to have_key("game_id")
-    expect(game["game_id"]).to eq(game.id)
+    expect(game_data).to have_key("game_id")
+    expect(game_data["game_id"]).to eq(game.id)
 
-    expect(game).to have_key("scores")
-    expect(game["scores"]).to be_an Array
+    expect(game_data).to have_key("scores")
+    expect(game_data["scores"]).to be_an Array
 
-    expect(game["scores"].first).to have_key("user_id")
-    expect(game["scores"].first["user_id"]).to eq(josh.id)
+    expect(game_data["scores"].first).to have_key("user_id")
+    expect(game_data["scores"].first["user_id"]).to eq(josh.id)
 
-    expect(game["scores"].first).to have_key("score")
-    expect(game["scores"].first["score"]).to eq(15)
+    expect(game_data["scores"].first).to have_key("score")
+    expect(game_data["scores"].first["score"]).to eq(15)
 
-    expect(game["scores"][1]).to have_key("user_id")
-    expect(game["scores"][1]["user_id"]).to eq(sal.id)
+    expect(game_data["scores"][1]).to have_key("user_id")
+    expect(game_data["scores"][1]["user_id"]).to eq(sal.id)
 
-    expect(game["scores"][1]).to have_key("score")
-    expect(game["scores"][1]["score"]).to eq(16)
+    expect(game_data["scores"][1]).to have_key("score")
+    expect(game_data["scores"][1]["score"]).to eq(16)
   end
 end
