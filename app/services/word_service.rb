@@ -22,6 +22,11 @@ class WordService
     end
 
     def raw_search
+      return invalid_word if response.body.include?("404")
       JSON.parse(response.body, symbolize_names: true)
+    end
+
+    def invalid_word
+      "'#{word}' is not a valid word."
     end
 end

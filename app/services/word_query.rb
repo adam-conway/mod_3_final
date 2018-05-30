@@ -4,7 +4,12 @@ class WordQuery
   end
 
   def word
-    Word.new(raw_word_query)
+    response = raw_word_query
+    if response.class == String
+      response
+    else
+      Word.new(raw_word_query)
+    end
   end
 
   private
