@@ -6,14 +6,14 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'support/factory_bot'
-require 'webmock'
-require 'vcr'
+# require 'webmock'
+# require 'vcr'
 
-VCR.configure do |config|
-  config.cassette_library_dir = "spec/fixtures/cassettes"
-  config.hook_into :webmock
-  config.filter_sensitive_data('<API_KEY>') { Fix this }
-end
+# VCR.configure do |config|
+#   config.cassette_library_dir = "spec/fixtures/cassettes"
+#   config.hook_into :webmock
+#   config.filter_sensitive_data('<API_KEY>') { Fix this }
+# end
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
