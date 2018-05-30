@@ -10,6 +10,14 @@ describe 'Guest' do
 
       expect(page).to have_content("'foxes' is a valid word and its root form is 'fox'.")
     end
+    scenario 'validates an invalid word' do
+      visit '/'
+
+      fill_in 'search', with: "foxez"
+      click_on "Validate Word"
+
+      expect(page).to have_content("'foxez' is not a valid word.")
+    end
   end
 end
 
